@@ -128,7 +128,7 @@ DeskproClient may also be used in the browser.
     <script src="node_modules/@deskpro/deskpro-api-client-javascript/dist/index.js"></script>
     
     <!-- Or import it from CDN -->
-    <!-- <script src="https://rawgit.com/deskpro/deskpro-api-client-javascript/master/dist/index.js"></script> -->
+    <!-- <script src="https://unpkg.com/@deskpro/deskpro-api-client-javascript@2.0.0/dist/index.js"></script> -->
   </head>
   <body>
     <script>
