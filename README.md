@@ -122,7 +122,11 @@ DeskproClient may also be used in the browser.
 <!DOCTYPE>
 <html>
   <head>
+    <!-- Import DeskproClient from node_modules -->
     <script src="node_modules/@deskpro/deskpro-api-client-javascript/dist/index.js"></script>
+    
+    <!-- Or import it from CDN -->
+    <!-- <script src="https://rawgit.com/deskpro/deskpro-api-client-javascript/master/dist/index.js"></script> -->
   </head>
   <body>
     <script>
