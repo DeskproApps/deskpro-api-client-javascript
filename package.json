@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "JavaScript client for use with the Deskpro API.",
   "main": "src/index.js",
+  "private": false,
   "scripts": {
     "build": "webpack -p",
     "prepublish": "npm run build",
