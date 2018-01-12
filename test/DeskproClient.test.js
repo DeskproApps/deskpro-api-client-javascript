@@ -115,6 +115,42 @@ describe('DeskproClient', () => {
       });
   });
   
+  it('batch', () => {
+    const responses = {
+      '101': {
+        data: {
+          'id': 101,
+          'title': 'Mary Had a Little Lamb'
+        },
+        meta: {
+          count: 1
+        },
+        linked: {}
+      },
+      '102': {
+        data: {
+          'id': 102,
+          'title': 'Baa Baa Black Sheep'
+        },
+        meta: {
+          count: 1
+        },
+        linked: {}
+      }
+    };
+    mock.onPost('/batch').reply(200, {
+      responses: responses
+    });
+  
+    return client.batch({
+      '101': '/articles/101',
+      '102': '/articles/102'
+    })
+      .then((resp) => {
+        expect(resp).to.eql(responses);
+      });
+  });
+  
   it('catches error', () => {
     const resp = {
       status: 500,

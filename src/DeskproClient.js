@@ -32,6 +32,7 @@ const AUTH_HEADER    = 'Authorization';
 const AUTH_TOKEN_KEY = 'token';
 const AUTH_KEY_KEY   = 'key';
 const LOG_PREFIX     = 'DeskproClient';
+const BATCH_ENDPOINT = '/batch';
 
 /**
  * Makes requests to the Deskpro API.
@@ -211,6 +212,18 @@ class DeskproClient {
   }
   
   /**
+   * Sends a batch request to the API
+   * 
+   * @param {Object} requests List of requests to send
+   * @returns {Promise.<T>}
+   */
+  batch(requests) {
+    return this.post(BATCH_ENDPOINT, {
+      requests: requests
+    });
+  }
+  
+  /**
    * Sends a request to the API
    * 
    * @param {String} method   The HTTP method to use, e.g. 'GET', 'POST', etc
@@ -260,6 +273,8 @@ class DeskproClient {
         self.lastHTTPResponse = resp;
         if (resp.data === undefined) {
           return resp;
+        } else if (resp.data.responses !== undefined) {
+          return resp.data.responses;
         } else if (resp.data.data === undefined) {
           return resp.data;
         }

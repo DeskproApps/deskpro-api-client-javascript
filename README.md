@@ -97,6 +97,29 @@ client.post('/blobs/temp', body)
   });
 ```
 
+#### Batch request
+
+```js
+const DeskproClient = require('@deskpro/deskpro-api-client-javascript');
+
+const client = new DeskproClient('http://deskpro-dev.com');
+client.setAuthKey(1, 'dev-admin-code');
+
+client.batch({
+  one: {
+    method: 'GET',
+    url: '/articles/105'
+  },
+  two: '/articles/106'
+}).then((resp) => {
+    console.log(resp.one.data);
+    console.log(resp.two.data);
+  })
+  .catch((err) => {
+    console.error(err.message);
+  });
+```
+
 #### Interpolating URLs
 
 ```js
